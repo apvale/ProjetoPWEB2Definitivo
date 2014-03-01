@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="h" tagdir="/WEB-INF/tags"%>
 
-<h:header titulo="Jampa Palace" tituloPage="Jampa Palace" />
+<h:header titulo="Jampa Palace" tituloPage="Jampa Palace Residence" />
 
 
 

@@ -1,7 +1,7 @@
 <%@ taglib prefix="h" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<h:header titulo="Cadastro de Condômino" tituloPage="Jampa Palace"/>
+<h:header titulo="Cadastro de Condômino" tituloPage="Jampa Palace Residence"/>
 	    
 	    <%-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	    <script src="<c:url value="/design/js/kickstart.js"/>"></script> --%>
