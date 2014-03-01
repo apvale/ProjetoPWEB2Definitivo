@@ -3,18 +3,15 @@
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <my:layout titulo="Cadastro de Condômino" tituloPage="Jampa Palace">
     <div class="container">
-        <form method="post" action="<c:url value="/condomino/cadastro"/>"
-            class="vertical">
+        <form method="post" action="<c:url value="/condomino/cadastro"/>" class="vertical">
             <c:if test="${type eq 0}">
                 <div class="notice success">
-                    <i class="icon-ok icon-large"></i> ${message} <a href="#close"
-                        class="icon-remove"></a>
+                    <i class="icon-ok icon-large"></i> ${message} <a href="#close" class="icon-remove"></a>
                 </div>
             </c:if>
             <c:if test="${type eq 1}">
                 <div class="notice error">
-                    <i class="icon-remove-sign icon-large"></i> ${message} <a
-                        href="#close" class="icon-remove"></a>
+                    <i class="icon-remove-sign icon-large"></i> ${message} <a href="#close" class="icon-remove"></a>
                 </div>
             </c:if>
             <div class="col_4 column">

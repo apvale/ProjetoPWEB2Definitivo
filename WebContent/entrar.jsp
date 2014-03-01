@@ -11,7 +11,7 @@
 
 			<button type="submit">Entrar</button>
 			<a class="button" href="<c:url value="/"/>">Voltar</a>
-            <a class="button" href="<c:url value="/recuperar-senha.jsp"/>">Recuperar Senha</a>
+            <a class="button" href="<c:url value="/condomino/recuperar-senha"/>">Recuperar Senha</a>
 		</form>
 	</div>
 </my:layout>

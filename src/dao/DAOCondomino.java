@@ -20,7 +20,7 @@ public class DAOCondomino extends DAOJPA<Condomino> {
 		
 		public Condomino findByEmail(String email){
 			try {
-				Query q = getManager().createQuery("SELECT u FROM Usuario u WHERE u.email=?1");
+				Query q = getManager().createQuery("SELECT c FROM Condomino c WHERE c.email=?1");
 				q.setParameter(1, email);
 				return (Condomino) q.getSingleResult();
 			} catch (Exception e) {

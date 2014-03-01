@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Random;
+import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -17,6 +18,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.eclipse.persistence.annotations.CascadeOnDelete;
 
@@ -41,6 +44,13 @@ public abstract class Usuario implements Serializable {
 	@Column(nullable=false, length=100)
 	private String nome;
 
+	@Column(nullable=true, length=36)
+	private String recuperar_codigo;
+	
+	@Column(nullable=true)
+	@Temporal(TemporalType.DATE)
+	private Date recuperar_data;
+
 	public Usuario() { }
 	
 	public Usuario(int id, String usuario, String senha, String nome) {
@@ -63,7 +73,17 @@ public abstract class Usuario implements Serializable {
 	}
 	
 	public static String gerarSenha() {
-		return Long.toString(new Random().nextLong(), 8);
+		return UUID.randomUUID()
+			       .toString()
+			       .replace("-", "")
+			       .substring(0, 8);
+	}
+	
+	public String gerarCodigoDeRecuperarSenha() {
+		String codigo = UUID.randomUUID().toString();
+		recuperar_codigo = codigo;
+		recuperar_data = new Date();
+		return codigo;
 	}
 	
 	public int getId() {
@@ -92,5 +112,19 @@ public abstract class Usuario implements Serializable {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getRecuperarCodigo() {
+		return recuperar_codigo;
+	}
+	public void setRecuperarCodigo(String codigo) {
+		this.recuperar_codigo = codigo;
+	}
+
+	public Date getRecuperarData() {
+		return recuperar_data;
+	}
+	public void setRecuperarData(Date data) {
+		this.recuperar_data = data;
 	}
 }

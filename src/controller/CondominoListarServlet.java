@@ -1,5 +1,7 @@
 package controller;
 
+import helper.EmailHelper;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -16,9 +18,9 @@ import model.Usuario;
 import dao.DAOCondomino;
 import dao.DAOUsuario;
 
+@SuppressWarnings("serial")
 @WebServlet("/admin/condominos")
 public class CondominoListarServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("condominio");
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,9 +40,16 @@ public class CondominoListarServlet extends HttpServlet {
 			DAOCondomino dao = new DAOCondomino();
 			Condomino c = dao.find(id);
 			dao.begin();
+			
 			String senha = Usuario.gerarSenha();
 			c.setSenha(Usuario.hashSenha(senha));
 			c.setAtivado(true);
+			
+			try {
+				EmailHelper.getInstance()
+				    .sendSenha(c.getEmail(), c.getNome(), c.getUsuario(), senha);
+			} catch (Exception e) { }
+			
 			dao.commit();
 			dao.close();
 		} else if (acao.equals("negar")) {

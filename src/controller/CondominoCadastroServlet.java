@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Condomino;
-import model.Usuario;
 import model.Veiculo;
 import dao.DAOCondomino;
 
@@ -48,7 +47,7 @@ public class CondominoCadastroServlet extends HttpServlet {
 			message = "E-mail em uso";
 		} else {
 			type = 0;
-			message = "Condomino cadastrado com sucesso!";
+			message = "Seu cadastro foi concluido com sucesso, aguarde um email com a validação da sua conta!";
 			
 			Veiculo v = new Veiculo();
 			v.setPlaca(placa);
