@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="h" tagdir="/WEB-INF/tags"%>
-<h:header titulo="Jampa Palace" tituloPage="Jampa Palace" />
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+<my:layout titulo="Jampa Palace" tituloPage="Jampa Palace">
     <div class="container">
         <h4>Olá, seja bem-vindo!</h4>
         <div class="col_12">
@@ -21,4 +21,4 @@
             <li><img src="<c:url value="/design/images/familia.jpg"/>" width="550" height="500" /></li>
         </ul>
     </div>
-<h:footer />
+</my:layout>
