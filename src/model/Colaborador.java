@@ -3,18 +3,18 @@ package model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="colaboradores")
-public class Colaborador implements Serializable{
+import org.eclipse.persistence.annotations.CascadeOnDelete;
 
-private static final long serialVersionUID = 1L;
+@Entity
+@Table(name="usuario_colaborador")
+@CascadeOnDelete
+@SuppressWarnings("serial")
+public class Colaborador implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;

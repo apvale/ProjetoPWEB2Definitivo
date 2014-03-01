@@ -2,19 +2,27 @@ package model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="veiculo")
+@SuppressWarnings("serial")
 public class Veiculo implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(nullable=false)
+	private Condomino dono;
 	
 	@Column(nullable=false, length=8)
 	private String placa;
@@ -30,12 +38,13 @@ public class Veiculo implements Serializable {
 	
 	public Veiculo() { }
 	
-	public Veiculo(int id, String placa, String modelo, String cor, String marca) {
+	public Veiculo(int id, String placa, String modelo, String cor, String marca, Condomino dono) {
 		this.id = id;
 		this.placa = placa;
 		this.modelo = modelo;
 		this.cor = cor;
 		this.marca = marca;
+		this.dono = dono;
 	}
 	
 	public int getId() {
@@ -73,5 +82,10 @@ public class Veiculo implements Serializable {
 		this.marca = marca;
 	}
 	
-	
+	public Condomino getDono() {
+		return dono;
+	}
+	public void setDono(Condomino d) {
+		this.dono = d;
+	}
 }

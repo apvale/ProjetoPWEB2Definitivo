@@ -16,7 +16,6 @@
 		    
 		    <property name="eclipselink.ddl-generation" value="create-tables"/>
 		    <property name="eclipselink.logging.level" value="ALL"/>
-		    <property name="eclipselink.logging.level" value="INFO"/>
 		    <property name="javax.persistence.schema-generation.database.action" value="none"/>
 		    <property name="javax.persistence.schema-generation.scripts.action" value="none"/>
 		</properties>

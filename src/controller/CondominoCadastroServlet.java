@@ -31,7 +31,6 @@ public class CondominoCadastroServlet extends HttpServlet {
 		int type = 1;
 		String message = "";
 		
-		
 		// Condomino
 		String nome = request.getParameter("nome").trim();
 		String email = request.getParameter("email").trim();
@@ -59,15 +58,14 @@ public class CondominoCadastroServlet extends HttpServlet {
 			
 			Condomino c = new Condomino();
 			c.setUsuario("apto" + apto);
-			c.setSenha(Usuario.hashSenha("1234"));
 			c.setData(new Date());
-			c.setAtivo(0);
 			c.setNome(nome);
 			c.setApto(apto);
 			c.setTelefone(telefone);
 			c.setEmail(email);
 			c.setMoradores(moradores);
 			c.setVeiculo(v);
+			v.setDono(c);
 			
 			dao.begin();
 			dao.persist(c);

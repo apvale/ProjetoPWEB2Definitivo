@@ -1,12 +1,6 @@
 package dao;
 
-import java.util.List;
-
-
 import model.Colaborador;
-
-
-
 
 public class DAOColaborador extends DAOJPA<Colaborador> {
 		public DAOColaborador(){

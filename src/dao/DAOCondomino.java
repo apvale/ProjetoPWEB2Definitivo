@@ -27,5 +27,13 @@ public class DAOCondomino extends DAOJPA<Condomino> {
 				return null;
 			}
 		}
+		
+		public List<Condomino> findDesativados(){
+			try {
+				return findAllByQuery("SELECT c FROM Condomino c WHERE c.ativado=0");
+			} catch (Exception e) {
+				return null;
+			}
+		}
 	}
 
