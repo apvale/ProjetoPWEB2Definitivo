@@ -1,0 +1,156 @@
+@CHARSET "ISO-8859-1";
+
+a{
+	text-decoration: none;
+	font-family: Philosopher;
+	text-align: center;
+}
+
+form{
+	font-family: Philosopher;
+	
+}
+
+p{
+	font-family: Philosopher;
+	text-align: center;
+	color: #00BFFF;
+	
+}
+
+h4{
+	font-family: Philosopher;
+	color: #00BFFF;
+	text-align: center;
+}
+
+h6{
+	font-family: Philosopher;
+	font-size: 12px;
+}
+body{
+	width: 1000px;
+	height: 560px;
+	margin: auto;
+}
+
+.container{
+		
+	position: relative;
+	width: 1000px;
+	height: 560px;
+	margin: 0 auto;	
+	display: table;
+}
+
+
+
+h1{
+	margin: auto;
+	margin-top: 30px;
+	text-align: center;
+	color: highlighttext;
+	font-family: Philosopher;
+	color: #00BFFF;
+}
+
+.imgbuilding{
+	margin: 40px;	
+	width: 216px;
+	heigth: 355px;
+}
+
+.info{
+	margin-right: -60px;
+	float: right;
+	text-aling: center;
+	width: 312px;
+	heigth: 279px;
+}
+
+.login{
+	
+	margin: 60px;
+	margin: auto;
+	text-align: center;
+	width: 450px;
+	height: 500px;
+	
+}
+
+.introducao{
+	margin: 10px;
+	text-align: justify;
+	display: block;
+	font-family: Philosopher;
+	font-style: italic;
+}
+
+.footer{
+	width: 1000px;
+	height: 30px;
+	margin: 0 auto;
+	text-align: center;	
+}
+
+#direitos{	
+	font-family: Philosopher;
+	color: #FF6A6A;
+	
+}
+
+#iconecafe{
+	float: right;
+}
+
+#instrucaocadastro{
+	text-align: center;
+	font-family: Philosopher;
+	font-size: 30px;
+	margin-bottom: 20px;
+}
+
+.relatoriopagamentos{
+	float: right;
+}
+	
+.areacondomino{
+	margin: auto;
+	float: center;
+	width: 400px;
+	height: 500px;
+	display: inline;
+	font-family: Philosopher;
+	font-size: 50px;
+}
+
+#form{
+	margin: 0 auto;
+	float: center;
+}
+
+.erro{
+	margin-top: 50px;
+	margin-left: 50px;
+	width: 1000px;
+	height: 200px;
+	text-align: center;
+}
+
+.imgerror{
+	width: 128px;
+	height: 128px;
+	
+}
+
+.botoesprincipais{
+	width: 317px;
+	height: 40px;
+	display: table;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+.botoesprincipais > a{
+	margin: 10px;
+}
