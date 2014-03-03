@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -16,12 +18,18 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.eclipse.persistence.annotations.CascadeOnDelete;
 
 @Entity
 @Table(name="usuario")
 @Inheritance(strategy=InheritanceType.JOINED)
 @DiscriminatorColumn(name="tipo", discriminatorType=DiscriminatorType.STRING, length=13)
 @DiscriminatorValue("Usuario")
+@CascadeOnDelete
+@SuppressWarnings("serial")
 public abstract class Usuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,17 +43,21 @@ public abstract class Usuario implements Serializable {
 	
 	@Column(nullable=false, length=100)
 	private String nome;
+
+	@Column(nullable=true, length=36)
+	private String recuperar_codigo;
 	
-	protected int ativo;
+	@Column(nullable=true)
+	@Temporal(TemporalType.DATE)
+	private Date recuperar_data;
 
 	public Usuario() { }
 	
-	public Usuario(int id, String usuario, String senha, String nome, int ativo) {
+	public Usuario(int id, String usuario, String senha, String nome) {
 		this.id = id;
 		this.usuario = usuario;
 		this.senha = senha;
 		this.nome = nome;
-		this.ativo = ativo;
 	}
 	
 	public static String hashSenha(String senha) {
@@ -58,6 +70,20 @@ public abstract class Usuario implements Serializable {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public static String gerarSenha() {
+		return UUID.randomUUID()
+			       .toString()
+			       .replace("-", "")
+			       .substring(0, 8);
+	}
+	
+	public String gerarCodigoDeRecuperarSenha() {
+		String codigo = UUID.randomUUID().toString();
+		recuperar_codigo = codigo;
+		recuperar_data = new Date();
+		return codigo;
 	}
 	
 	public int getId() {
@@ -88,10 +114,17 @@ public abstract class Usuario implements Serializable {
 		this.nome = nome;
 	}
 
-	public int getAtivo() {
-		return ativo;
+	public String getRecuperarCodigo() {
+		return recuperar_codigo;
 	}
-	public void setAtivo(int ativo) {
-		this.ativo = ativo;
+	public void setRecuperarCodigo(String codigo) {
+		this.recuperar_codigo = codigo;
+	}
+
+	public Date getRecuperarData() {
+		return recuperar_data;
+	}
+	public void setRecuperarData(Date data) {
+		this.recuperar_data = data;
 	}
 }

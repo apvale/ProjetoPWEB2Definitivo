@@ -11,9 +11,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.eclipse.persistence.annotations.CascadeOnDelete;
+
 @Entity
 @Table(name="usuario_condomino")
 @DiscriminatorValue("Condomino")
+@CascadeOnDelete
+@SuppressWarnings("serial")
 public class Condomino extends Usuario {
 	@Column(nullable=false)
 	private int apto;
@@ -23,7 +27,7 @@ public class Condomino extends Usuario {
 	@Column(nullable=false, unique=true, length=100)
 	private String email;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL, mappedBy="dono")
 	private Veiculo veiculo;
 	
 	@Column(nullable=false)
@@ -32,16 +36,20 @@ public class Condomino extends Usuario {
 	@Temporal(TemporalType.DATE)
 	private Date data;
 	
+	@Column(nullable=false)
+	private Boolean ativado = false;
+	
 	public Condomino() { }
 	
-	public Condomino(int id, String usuario, String senha, String nome, int apto, int telefone, String email, Veiculo veiculo, int moradores, Date data) {
-		super(id, usuario, senha, nome, 0);
+	public Condomino(int id, String usuario, String senha, String nome, int apto, int telefone, String email, Veiculo veiculo, int moradores, Date data, Boolean ativado) {
+		super(id, usuario, senha, nome);
 		this.apto = apto;
 		this.telefone = telefone;
 		this.email = email;
 		this.veiculo = veiculo;
 		this.moradores = moradores;
 		this.data = data;
+		this.ativado = ativado;
 	}
 	
 	public int getApto() {
@@ -86,5 +94,12 @@ public class Condomino extends Usuario {
 	}
 	public Date getData() {
 		return this.data;
+	}
+	
+	public void setAtivado(Boolean a) {
+		this.ativado = a;
+	}
+	public Boolean getAtivado() {
+		return this.ativado;
 	}
 }

@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Condomino;
-import model.Usuario;
 import model.Veiculo;
 import dao.DAOCondomino;
 
@@ -31,7 +30,6 @@ public class CondominoCadastroServlet extends HttpServlet {
 		int type = 1;
 		String message = "";
 		
-		
 		// Condomino
 		String nome = request.getParameter("nome").trim();
 		String email = request.getParameter("email").trim();
@@ -49,7 +47,7 @@ public class CondominoCadastroServlet extends HttpServlet {
 			message = "E-mail em uso";
 		} else {
 			type = 0;
-			message = "Condomino cadastrado com sucesso!";
+			message = "Seu cadastro foi concluido com sucesso, aguarde um email com a validação da sua conta!";
 			
 			Veiculo v = new Veiculo();
 			v.setPlaca(placa);
@@ -59,15 +57,14 @@ public class CondominoCadastroServlet extends HttpServlet {
 			
 			Condomino c = new Condomino();
 			c.setUsuario("apto" + apto);
-			c.setSenha(Usuario.hashSenha("1234"));
 			c.setData(new Date());
-			c.setAtivo(0);
 			c.setNome(nome);
 			c.setApto(apto);
 			c.setTelefone(telefone);
 			c.setEmail(email);
 			c.setMoradores(moradores);
 			c.setVeiculo(v);
+			v.setDono(c);
 			
 			dao.begin();
 			dao.persist(c);

@@ -8,6 +8,9 @@
 		<title>${titulo}</title>
         <link rel="stylesheet" href="<c:url value="/design/css/kickstart.css"/>" media="all" />
         <link type="text/css" rel="stylesheet" href="<c:url value="/design/css/projeto.css"/>" />
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="<c:url value="/design/js/jquery.min.js"/>"></script>
+        <script src="<c:url value="/design/js/kickstart.js"/>"></script>
 	</head>
 	<body>
 		<h1><a style="text-decoration: none;" href="<c:url value="/inicio.jsp"/>">${tituloPage}</a></h1>
@@ -17,7 +20,5 @@
 			<i id="iconecafe" class="icon-coffee"></i>
 			<p id="direitos">Projeto PWEB II - Amanda, Ana Paula e Erycsson</p>
 		</div>
-        <script src="<c:url value="/design/js/jquery.min.js"/>"></script>
-        <script src="<c:url value="/design/js/kickstart.js"/>"></script>
 	</body>
 </html>
